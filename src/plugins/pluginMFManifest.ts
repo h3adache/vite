@@ -337,7 +337,7 @@ const Manifest = (): Plugin[] => {
     const exposes = Object.keys(options.exposes)
       .map((key) => {
         // assets(.css, .jpg, .svg等)其他资源, 不重要, 暂未处理
-        const formatKey = key.replace('./', '');
+        const formatKey = key.replace(/^\.?\//, '');
         const sourceFile = options.exposes[key].import;
         if (!preloadMap[sourceFile]) return;
         return {
